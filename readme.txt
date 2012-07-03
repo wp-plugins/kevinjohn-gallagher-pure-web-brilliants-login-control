@@ -4,7 +4,7 @@
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, style, login, images, branding
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.0
+	Stable tag: 			2.1
 
 
 
@@ -37,6 +37,11 @@ You can find that at: http://wordpress.org/extend/plugins/kevinjohn-gallagher-pu
 
 == Changelog ==
 
+= 2.1 =
+* A number of fixes for 3.4, which decided to rewrite some of the CSS. Please upgrade!
+* removes teh default link to wordpress and replaces it with you logo and link
+
+
 = 2.0 =
 * Removal of non-GPLv3 compatible functions.
 * Publish to WP.org repository.
@@ -61,7 +66,7 @@ Framework release blog post: [Pure Web Brilliant’s plugin framework released](
 > " I want to go on record thanking my colleagues and many of our current & past clients, who were (mostly) happy to negotiate changes in the licence of our past work so that we could make it open source. "
 
 * Package:						Pure Web Brilliant
-* Version:						2.0.1
+* Version:						2.1
 * Author:						Kevinjohn Gallagher <framework@KevinjohnGallagher.com>
 * Copyright:					Copyright (c) 2012, Kevinjohn Gallagher
 * Link:							http://KevinjohnGallagher.com

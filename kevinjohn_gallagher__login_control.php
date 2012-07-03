@@ -2,7 +2,7 @@
 /*
 	Plugin Name: 			Kevinjohn Gallagher: Pure Web Brilliant's Login Control
 	Description: 			Adds the ability to style the WP Login page
-	Version: 				2.0
+	Version: 				2.1
 	Author: 				Kevinjohn Gallagher
 	Author URI: 			http://kevinjohngallagher.com/
 	
@@ -11,7 +11,7 @@
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, style, login, images, branding
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.0
+	Stable tag: 			2.1
 */
 /**
  *
@@ -38,7 +38,7 @@
  *
  *
  *	@package				Pure Web Brilliant
- *	@version 				2.0.1
+ *	@version 				2.1
  *	@author 				Kevinjohn Gallagher <wordpress@kevinjohngallagher.com>
  *	@copyright 				Copyright (c) 2012, Kevinjohn Gallagher
  *	@link 					http://kevinjohngallagher.com
@@ -49,7 +49,7 @@
 
 
 
-	define( '_KEVINJOHN_GALLAGHER___login_control', '2.0' );
+	define( '_KEVINJOHN_GALLAGHER___login_control', '2.1' );
 
 
 
@@ -135,6 +135,8 @@
 						
 						add_action('login_head', 		array( $this, 'kjg_pwb_login_style'), 50);
 						add_action('login_head', 		array( $this, 'kjg_pwb_passed_head'), 99);
+						
+						$this->groundhog_day 									= 	false;
 						
 						
 						
@@ -259,8 +261,27 @@
 						//
 						
 						add_filter( 'option_blogname', 	array( $this, 'crazy_process_maze_of_filters_to_replace_one_bit_of_text'), 100, 2 );
+
+						add_filter( 'login_headerurl', 	array( $this, 'cheeky_bastards_link'), 100, 2 );						
+
+						add_filter( 'login_headertitle', 	array( $this, 'cheeky_bastards_title'), 100, 2 );						
+						
 						
 						return 	$this->we_have_passed_the_head_part;
+				}
+				
+				
+				
+				public 	function 	cheeky_bastards_link($something='something', $darkside='darkside')
+				{
+						return 	get_bloginfo('url');
+					
+				}
+
+
+				public 	function 	cheeky_bastards_title($something='something', $darkside='darkside')
+				{
+						return 	get_bloginfo('name');					
 				}
 				
 				
@@ -311,6 +332,28 @@
 						if( !empty( $this->plugin_options['login_rebox'] ) )
 						{
 						
+								echo '
+										body.login
+										{
+											padding-top:	150px;
+										}
+
+										.login #nav
+										{
+										    margin: 0 0 20px 0;
+										    padding: 0px;
+										    text-align: center;
+										}																			
+
+
+										
+										.login #nav a
+										{
+											padding: 10px;
+										}	
+										
+								
+									';
 
 
 								if( $this->plugin_options['login_rebox'] == "box-white" )
@@ -333,6 +376,8 @@
 															box-shadow: 				rgba(200, 200, 200, 1) 0 4px 18px;
 													}
 													
+													#login form,
+													.login form,													
 													form
 													{
 															margin:						20px 0px 30px;
@@ -381,10 +426,13 @@
 															box-shadow: 				rgba(50,50,50, 1) 0 4px 18px;
 													}
 													
+													#login form,
+													.login form,
 													form
 													{
 															background:					none;
 															margin:						20px 0px 30px;
+															padding: 					25px 25px 45px;
 				
 															border-width:				0px;
 															border-bottom:				1px dashed #333;
@@ -408,8 +456,8 @@
 															margin:						20px 10px;
 													}
 													
-													
-													.login #nav a,
+
+
 													#nav a,
 													#nav,
 													a
@@ -442,21 +490,27 @@
 		
 								echo '
 								
+											#login h1 a,
+											.login h1 a,
 											h1 a 
 											{
+													min-height:			70px;
 													text-indent: 		0px;
 													display:			block;
 													height: 			auto;
-													width:				250px;
+													width:				100%;
+													
 													text-align: 		center;
 													margin:				0px auto;
 													background: 		none;
+													padding-bottom:		20px;
 											}
 
 
+											.login h1 a img,
 											h1 a img 
 											{
-													max-width:			100%;
+													max-width:			80%;
 													height:				auto;
 													opacity:			0.9;
 											}
@@ -480,17 +534,24 @@
 						{
 								if( $this->we_have_passed_the_head_part )
 								{
-										if( $this->plugin_options['login_logo'] )
-										{
-
-												$image 			= 		'<img src="'. $this->plugin_options['login_logo'].'" alt="'. $args .'" />';									
+										$this->second_time_is_the_charm++;
+										
+										if( $this->second_time_is_the_charm == 2 )
+										{								
+												if( $this->plugin_options['login_logo'] )
+												{
 		
-												echo 			$image;
-
-											//	$return_me 		= 		$image;	
-												
-												return false;
-										}								
+														$image 			= 		'<img src="'. $this->plugin_options['login_logo'].'" alt="'. $args .'" />';									
+				
+														echo 					$image;
+		
+													//	$return_me 		= 		$image;	
+													
+														$this->groundhog_day 	= 	true;
+														
+														return false;
+												}	
+										}							
 								}
 							
 						}
@@ -510,10 +571,13 @@
 						echo '
 								<style>
 									html,
-									body
+									body,
+									body.login
 									{
 											'. $this->convert_style_array_to_string( $this->body_style_output ) .'	
 									}
+									
+
 									
 							';
 							
@@ -524,6 +588,7 @@
 										
 
 						echo '
+									.login #backtoblog,
 									#backtoblog
 									{
 											display:				none;
