@@ -1,10 +1,10 @@
-=== Kevinjohn Gallagher: Pure Web Brilliant's Login Control ===
+=== Pure Web Brilliant's Login Control ===
 	Contributors:			kevinjohngallagher, purewebbrilliant, pure-web-brilliant 
 	Donate link:			http://kevinjohngallagher.com/
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, style, login, images, branding
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.1
+	Stable tag: 			2.2
 
 
 
@@ -36,6 +36,11 @@ You can find that at: http://wordpress.org/extend/plugins/kevinjohn-gallagher-pu
 
 
 == Changelog ==
+
+
+= 2.2 =
+* Updated security check
+
 
 = 2.1 =
 * A number of fixes for 3.4, which decided to rewrite some of the CSS. Please upgrade!

@@ -2,7 +2,7 @@
 /*
 	Plugin Name: 			Kevinjohn Gallagher: Pure Web Brilliant's Login Control
 	Description: 			Adds the ability to style the WP Login page
-	Version: 				2.1
+	Version: 				2.2
 	Author: 				Kevinjohn Gallagher
 	Author URI: 			http://kevinjohngallagher.com/
 	
@@ -11,7 +11,7 @@
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, style, login, images, branding
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.1
+	Stable tag: 			2.2
 */
 /**
  *
@@ -38,7 +38,7 @@
  *
  *
  *	@package				Pure Web Brilliant
- *	@version 				2.1
+ *	@version 				2.2
  *	@author 				Kevinjohn Gallagher <wordpress@kevinjohngallagher.com>
  *	@copyright 				Copyright (c) 2012, Kevinjohn Gallagher
  *	@link 					http://kevinjohngallagher.com
@@ -48,8 +48,17 @@
  */
 
 
+ 	if ( ! defined( 'ABSPATH' ) )
+ 	{ 
+ 			die( 'Direct access not permitted.' ); 
+ 	}
+ 	
+ 	
+ 	
 
-	define( '_KEVINJOHN_GALLAGHER___login_control', '2.1' );
+
+
+	define( '_KEVINJOHN_GALLAGHER___login_control', '2.2' );
 
 
 
